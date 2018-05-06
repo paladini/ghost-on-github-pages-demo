@@ -2,7 +2,7 @@
 <head>
     <meta charset="utf-8">
 
-    <title>Setting up your own Ghost theme</title>
+    <title>Writting my first article</title>
 
     <meta name="HandheldFriendly" content="True">
     <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
@@ -15,25 +15,17 @@
     
     <meta property="og:site_name" content="Paladini Blog">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Setting up your own Ghost theme">
-    <meta property="og:description" content="Creating a totally custom design for your publication Ghost comes with a beautiful default theme called Casper, which is designed to be a clean, readable publication layout and can be easily adapted for most purposes. However, Ghost can also be completely themed to suit your needs. Rather than just giving">
-    <meta property="og:url" content="http://localhost:2373/themes/">
-    <meta property="og:image" content="https://casper.ghost.org/v1.0.0/images/design.jpg">
-    <meta property="article:published_time" content="2018-05-06T16:12:23.000Z">
-    <meta property="article:modified_time" content="2018-05-06T16:12:23.000Z">
-    <meta property="article:tag" content="Getting Started">
-    
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Setting up your own Ghost theme">
-    <meta name="twitter:description" content="Creating a totally custom design for your publication Ghost comes with a beautiful default theme called Casper, which is designed to be a clean, readable publication layout and can be easily adapted for most purposes. However, Ghost can also be completely themed to suit your needs. Rather than just giving">
-    <meta name="twitter:url" content="http://localhost:2373/themes/">
-    <meta name="twitter:image" content="https://casper.ghost.org/v1.0.0/images/design.jpg">
+    <meta property="og:title" content="Writting my first article">
+    <meta property="og:description" content="Testing my second deploy on Github pages.">
+    <meta property="og:url" content="http://localhost:2373/writting-my-first-article/">
+    <meta property="article:published_time" content="2018-05-06T16:16:17.000Z">
+    <meta property="article:modified_time" content="2018-05-06T16:16:17.000Z">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Writting my first article">
+    <meta name="twitter:description" content="Testing my second deploy on Github pages.">
+    <meta name="twitter:url" content="http://localhost:2373/writting-my-first-article/">
     <meta name="twitter:label1" content="Written by">
-    <meta name="twitter:data1" content="Ghost">
-    <meta name="twitter:label2" content="Filed under">
-    <meta name="twitter:data2" content="Getting Started">
-    <meta property="og:image:width" content="1400">
-    <meta property="og:image:height" content="1050">
+    <meta name="twitter:data1" content="Fernando Paladini">
     
     <script type="application/ld+json">
 {
@@ -46,22 +38,21 @@
     },
     "author": {
         "@type": "Person",
-        "name": "Ghost",
-        "url": "http://localhost:2373/author/ghost/",
+        "name": "Fernando Paladini",
+        "image": {
+            "@type": "ImageObject",
+            "url": "//www.gravatar.com/avatar/7c4f0c147367fcea20b3f58fd6a8d9a6?s=250&d=mm&r=x",
+            "width": 250,
+            "height": 250
+        },
+        "url": "http://localhost:2373/author/fernando/",
         "sameAs": []
     },
-    "headline": "Setting up your own Ghost theme",
-    "url": "http://localhost:2373/themes/",
-    "datePublished": "2018-05-06T16:12:23.000Z",
-    "dateModified": "2018-05-06T16:12:23.000Z",
-    "image": {
-        "@type": "ImageObject",
-        "url": "https://casper.ghost.org/v1.0.0/images/design.jpg",
-        "width": 1400,
-        "height": 1050
-    },
-    "keywords": "Getting Started",
-    "description": "Creating a totally custom design for your publication Ghost comes with a beautiful default theme called Casper, which is designed to be a clean, readable publication layout and can be easily adapted for most purposes. However, Ghost can also be completely themed to suit your needs. Rather than just giving",
+    "headline": "Writting my first article",
+    "url": "http://localhost:2373/writting-my-first-article/",
+    "datePublished": "2018-05-06T16:16:17.000Z",
+    "dateModified": "2018-05-06T16:16:17.000Z",
+    "description": "Testing my second deploy on Github pages.",
     "mainEntityOfPage": {
         "@type": "WebPage",
         "@id": "http://localhost:2373/"
@@ -93,34 +84,15 @@
         <article class="post">
 
             <header class="post-header">
-                <h1 class="post-title">Setting up your own Ghost theme</h1>
+                <h1 class="post-title">Writting my first article</h1>
                 <section class="post-meta">
-                    <p class="author">by <a href="../../author/ghost/">Ghost</a></p>
+                    <p class="author">by <a href="../../author/fernando/">Fernando Paladini</a></p>
                     <time class="post-date" datetime="2018-05-06">2018-05-06</time>
                 </section>
             </header>
-            <figure class="post-image">
-                <amp-img src="https://casper.ghost.org/v1.0.0/images/design.jpg" width="600" height="400" layout="responsive"></amp-img>
-            </figure>
             <section class="post-content">
 
-                <div class="kg-card-markdown"><p>Creating a totally custom design for your publication</p>
-<p>Ghost comes with a beautiful default theme called Casper, which is designed to be a clean, readable publication layout and can be easily adapted for most purposes. However, Ghost can also be completely themed to suit your needs. Rather than just giving you a few basic settings which act as a poor proxy for code, we just let you write code.</p>
-<p>There are a huge range of both free and premium pre-built themes which you can get from the <a href="http://marketplace.ghost.org">Ghost Theme Marketplace</a>, or you can simply create your own from scratch.</p>
-<p><a href="http://marketplace.ghost.org"><amp-img src="https://casper.ghost.org/v1.0.0/images/marketplace.jpg" alt="marketplace" width="1400" height="893" layout="responsive"></amp-img></a></p>
-<blockquote>
-<p>Anyone can write a completely custom Ghost theme, with just some solid knowledge of HTML and CSS</p>
-</blockquote>
-<p>Ghost themes are written with a templating language called handlebars, which has a bunch of dynamic helpers to insert your data into template files. Like <code>{{author.name}}</code>, for example, outputs the name of the current author.</p>
-<p>The best way to learn how to write your own Ghost theme is to have a look at <a href="https://github.com/TryGhost/Casper">the source code for Casper</a>, which is heavily commented and should give you a sense of how everything fits together.</p>
-<ul>
-<li><code>default.hbs</code> is the main template file, all contexts will load inside this file unless specifically told to use a different template.</li>
-<li><code>post.hbs</code> is the file used in the context of viewing a post.</li>
-<li><code>index.hbs</code> is the file used in the context of viewing the home page.</li>
-<li>and so on</li>
-</ul>
-<p>We've got <a href="http://themes.ghost.org/docs/about">full and extensive theme documentation</a> which outlines every template file, context and helper that you can use.</p>
-<p>If you want to chat with other people making Ghost themes to get any advice or help, there's also a <strong>#themes</strong> channel in our <a href="https://slack.ghost.org">public Slack community</a> which we always recommend joining!</p>
+                <div class="kg-card-markdown"><p>Testing my second deploy on Github pages.</p>
 </div>
 
             </section>
