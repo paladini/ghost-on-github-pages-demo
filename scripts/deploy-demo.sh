@@ -43,10 +43,9 @@ fi
 # gssg may crawl the Classic v2 nav link into static/legacy — remove duplicate
 rm -rf "${PUBLISH_PATH}/static/legacy"
 
-# Fix root-relative links for GitHub Pages project sites (blog under /static/)
-if command -v node >/dev/null 2>&1 && [ -f "${LEGACY_BACKUP}/scripts/fix-project-site-links.js" ]; then
-	node "${LEGACY_BACKUP}/scripts/fix-project-site-links.js"
-	cp -a "${GHOST_HOME}/current/static/." "${PUBLISH_PATH}/static/"
+# Post-process for GitHub Pages (relative paths, theme assets, strip API scripts)
+if command -v node >/dev/null 2>&1 && [ -f "${LEGACY_BACKUP}/scripts/post-process-static.js" ]; then
+	node "${LEGACY_BACKUP}/scripts/post-process-static.js" "${PUBLISH_PATH}/static"
 fi
 
 cd "${PUBLISH_PATH}"
