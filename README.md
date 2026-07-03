@@ -1,69 +1,87 @@
-<a href="https://github.com/TryGhost/Ghost"><img src="https://cloud.githubusercontent.com/assets/120485/18661790/cf942eda-7f17-11e6-9eb6-9c65bfc2abd8.png" alt="Ghost" /></a>
-<a href="https://travis-ci.org/TryGhost/Ghost"><img align="right" src="https://travis-ci.org/TryGhost/Ghost.svg?branch=master" alt="Build status" /></a>
+# Ghost on GitHub Pages — Live Demo
 
-The project is maintained by a non-profit organisation called the **Ghost Foundation**, along with an amazing group of independent [contributors](https://github.com/TryGhost/Ghost/contributors). We're trying to make publishing software that changes the shape of online journalism.
+A live demonstration of [Ghost on GitHub Pages](https://github.com/paladini/ghost-on-github-pages) **version 3**: free Ghost blogging hosted on GitHub Pages with no server required.
 
-- [Ghost.org](https://ghost.org)
-- [Supported Node Versions](https://docs.ghost.org/v1/docs/supported-node-versions)
-- [Latest Release](https://ghost.org/developers/)
-- [Help & Support](http://help.ghost.org/)
-- [Theme Docs](http://themes.ghost.org/v1/)
-- [API Docs](https://api.ghost.org/)
-- [Contributing Guide](https://docs.ghost.org/v1/docs/contributing)
-- [Developer Blog](http://dev.ghost.org)
-- [Self-hoster Docs](http://docs.ghost.org/v1/)
+**Live site:** https://paladini.github.io/ghost-on-github-pages-demo/
 
-**NOTE: If you’re stuck, can’t get something working or need some help, please head on over and join our [forum](https://forum.ghost.org/) rather than opening an issue.**
+## What this repo shows
 
-&nbsp;
+| | **Current demo (v3)** | **Classic archive (v2)** |
+|---|---|---|
+| URL | [/static/](static/) | [/legacy/v2/static/](legacy/v2/static/) |
+| Ghost version | 5.x | 1.22.5 |
+| Static generator | gssg (Node.js) | buster (Python 2) |
+| Production URLs | Correct | Broken (localhost links) |
+| Tool version | [v3.0.0+](https://github.com/paladini/ghost-on-github-pages/releases/latest) | [v2.0.1](https://github.com/paladini/ghost-on-github-pages/releases/tag/v2.0.1) |
 
-![Ghost](https://user-images.githubusercontent.com/120485/28764244-344050c0-75d5-11e7-9314-45bc4177164e.png)
+The root `index.html` redirects to the v3 blog. The Classic v2 site is preserved under `legacy/v2/` as a historical reference — including its known localhost URL bugs.
 
-&nbsp;
+## Get your own blog
 
-# Hosting a live Ghost site
+Follow the [v3 Getting Started guide](https://github.com/paladini/ghost-on-github-pages/blob/master/docs/v3/GETTING-STARTED.md):
 
-<a href="https://ghost.org/pricing"><img src="https://cloud.githubusercontent.com/assets/120485/18662071/f30da886-7f18-11e6-90f2-42c0ade79fd1.png" alt="Ghost(Pro)" /></a>
+1. Install [Node.js](https://nodejs.org/) and `wget`
+2. Download [ghost-on-github-pages v3](https://github.com/paladini/ghost-on-github-pages/releases/latest)
+3. Run `./install.sh`
+4. Write posts at `http://localhost:2373/ghost`
+5. Publish with `cd ~/.ghost && ./deploy.sh`
 
-The easiest way to deploy Ghost is with our official **[Ghost(Pro)](https://ghost.org/pricing/)** managed service. You can have a fresh instance up and running in a couple of clicks with a worldwide CDN, backups, security and maintenance all done for you.
+Upgrading from Classic v2? See the [Migration guide](https://github.com/paladini/ghost-on-github-pages/blob/master/docs/MIGRATION.md).
 
-Not only will it save you hours of maintenance per month, but all revenue goes to the Ghost Foundation, which funds the maintenance and further development of Ghost itself. So you’ll be supporting open source software *and* getting a great service **at the same time**! Talk about win/win. :trophy:
+## Repository layout
 
-## Self-Hosters
+```
+├── index.html          # Redirect to v3 blog
+├── static/             # v3 static site (gssg output)
+├── legacy/v2/          # Frozen 2018 Classic demo
+├── content-seed/       # Ghost export for reproducing demo content
+├── scripts/            # Maintainer deploy scripts
+└── .github/workflows/  # CI validation
+```
 
-Other options are also available if you prefer playing around with servers by yourself, of course. The freedom of choice is in your hands.
+This repo contains **only static files and seed content** — not a full Ghost installation. That is by design in v3 (see [issue #9](https://github.com/paladini/ghost-on-github-pages/issues/9)).
 
-- [Self-hosting Guide](https://docs.ghost.org/v1/docs/getting-started-guide)
+## Maintainers: republishing the demo
 
+### Prerequisites
 
-# Theme Developers
+- Node.js, wget, and Ghost CLI installed
+- Local Ghost blog at `~/.ghost` configured for this repository
+- Bash shell (Git Bash or WSL on Windows)
 
-If you are developing a Ghost theme for your own site or creating themes for others to use we recommend installing Ghost on your own local machine. Luckily we have a brand new Ghost CLI to make this really easy 😄
+### Restore demo content
 
-- [Installing Ghost via the CLI](https://docs.ghost.org/v1/docs/install-local)
-- [Theme Developer Docs](http://themes.ghost.org)
+```bash
+cd ~/.ghost/current
+ghost import content-seed/demo-posts.json
+ghost start
+```
 
+### Publish
 
-# Contributors & Advanced Developers
+From this repository checkout:
 
-For anyone wishing to contribute to Ghost or to hack/customise core files we recommend following our development setup guides:
+```bash
+chmod +x scripts/deploy-demo.sh
+./scripts/deploy-demo.sh
+```
 
-- [General Contributor Guide](https://docs.ghost.org/v1/docs/contributing)
-- [Developer Setup Instructions](https://docs.ghost.org/v1/docs/working-with-ghost)
-- [Admin Client development guide](https://docs.ghost.org/v1/docs/working-with-the-admin-client)
+The deploy script runs the standard v3 `deploy.sh` and preserves `legacy/`, `content-seed/`, CI workflows, and this README in the published output.
 
+### Deploy settings
 
-# Staying Up to Date
+The demo uses these GitHub Pages settings (saved in `~/.ghost/deploy.conf`):
 
-When a new version of Ghost comes out, you'll want to look over these [upgrade instructions](https://docs.ghost.org/v1/docs/upgrade) for what to do next.
+```
+GH_USERNAME=paladini
+GH_REPO=ghost-on-github-pages-demo
+PRODUCTION_DOMAIN=https://paladini.github.io/ghost-on-github-pages-demo
+```
 
-You can talk to other Ghost users and developers in our [forum](https://forum.ghost.org/) (it's pretty awesome).
+## License
 
-New releases are announced on the [dev blog](http://dev.ghost.org/tag/releases/). You can subscribe by email or follow [@TryGhost_Dev](https://twitter.com/tryghost_dev) on Twitter, if you prefer your updates bite-sized and facetious. :saxophone::turtle:
+MIT — see [LICENSE](LICENSE).
 
-&nbsp;
+## About
 
-
-# Copyright & License
-
-Copyright (c) 2013-2018 Ghost Foundation - Released under the [MIT license](LICENSE). Ghost and the Ghost Logo are trademarks of Ghost Foundation Ltd. Please see our [trademark policy](https://ghost.org/trademark/) for info on acceptable usage.
+Created by [Fernando Paladini](https://github.com/paladini) to showcase free Ghost hosting on GitHub Pages.

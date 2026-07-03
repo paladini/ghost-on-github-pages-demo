@@ -1,0 +1,31 @@
+name: Validate static site
+
+on:
+  push:
+    branches: [master, main, gh-pages]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Confirm legacy v2 archive exists
+        run: test -d legacy/v2/static
+
+      - name: Confirm v3 static site exists
+        run: test -f static/index.html
+
+      - name: Check v3 static has no broken localhost URLs in metadata
+        run: |
+          if grep -rE '(href|content|src)="https?://localhost:(2368|2373)' static/; then
+            echo "Found broken localhost URLs in v3 static/ metadata or links"
+            exit 1
+          fi
+          echo "No broken localhost URL attributes found"
+
+      - name: Check robots.txt and sitemap use production domain
+        run: |
+          grep -q 'paladini.github.io/ghost-on-github-pages-demo' static/robots.txt
+          grep -q 'paladini.github.io/ghost-on-github-pages-demo' static/sitemap.xml
