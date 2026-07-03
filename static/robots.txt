@@ -1,5 +1,5 @@
 User-agent: *
-Sitemap: https://paladini.github.io/ghost-on-github-pages-demo/sitemap.xml
+Sitemap: https://paladini.github.io/ghost-on-github-pages-demo/static/sitemap.xml
 Disallow: /ghost/
 Disallow: /email/
 Disallow: /members/api/comments/counts/

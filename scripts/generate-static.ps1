@@ -27,5 +27,6 @@ if (Test-Path $destStatic) { Remove-Item -Recurse -Force $destStatic }
 Copy-Item -Recurse (Join-Path $ghostCurrent "static") $destStatic
 $nestedLegacy = Join-Path $destStatic "legacy"
 if (Test-Path $nestedLegacy) { Remove-Item -Recurse -Force $nestedLegacy }
+node (Join-Path $demoRoot "scripts\fix-project-site-links.js")
 
 Write-Host "Static site copied to $destStatic"

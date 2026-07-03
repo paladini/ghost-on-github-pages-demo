@@ -18,6 +18,7 @@ Then regenerate and publish:
 
 # Windows
 powershell -ExecutionPolicy Bypass -File scripts/generate-static.ps1
+node scripts/fix-project-site-links.js
 # commit and push static/ manually
 ```
 
